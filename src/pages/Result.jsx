@@ -6,6 +6,7 @@ import ShareSection from '../components/ShareSection';
 import LaurelDivider from '../components/LaurelDivider';
 import { godImageMap, orgImageMap } from '../lib/assetImages';
 import { staggerContainer, fadeUp } from '../lib/motionVariants';
+import ConferirProfeciaForm from '../components/ConferirProfeciaForm';
 
 export default function Result() {
   const { godResult, orgResult } = useResults();
@@ -122,6 +123,10 @@ export default function Result() {
           Explorar o Mapa Mundi →
         </Link>
       </motion.div>
+
+      {godResult && orgResult && (
+        <ConferirProfeciaForm parenteDivino={godResult.entity.id} organizacao={orgResult.entity.id} />
+      )}
     </motion.div>
   );
 }
