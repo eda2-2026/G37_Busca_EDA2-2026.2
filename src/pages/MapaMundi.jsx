@@ -54,14 +54,6 @@ function touchDistance(touches) {
   return Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
 }
 
-/**
- * Mapa Mundi do território — curiosidade extra acessível a partir do resultado.
- * Ocupa a tela toda (fixed inset-0), com pan por arraste, zoom por botões,
- * roda do mouse e pinça no touch. Zoom mínimo mostra o mapa inteiro encaixado
- * (baseRect = object-fit: contain calculado a partir da imagem real), não uma
- * versão cortada. Marcadores contra-escalam (ver MapMarker) pra manter
- * tamanho fixo na tela e continuar ancorados na coordenada certa do mapa.
- */
 export default function MapaMundi() {
   const { godResult } = useResults();
   const [activeLocation, setActiveLocation] = useState(null);

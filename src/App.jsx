@@ -7,6 +7,7 @@ import QuizGods from './pages/QuizGods';
 import QuizOrgs from './pages/QuizOrgs';
 import Result from './pages/Result';
 import MapaMundi from './pages/MapaMundi';
+import Profecias from './pages/Profecias';
 
 function App() {
   return (
@@ -46,6 +47,14 @@ function App() {
           }
         />
         <Route path="/mapa" element={<MapaMundi />} />
+        <Route
+          path="/profecias"
+          element={
+            <Layout>
+              <Profecias />
+            </Layout>
+          }
+        />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </ResultsProvider>

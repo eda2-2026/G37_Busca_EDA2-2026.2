@@ -9,8 +9,8 @@ const navLinkClass =
 /**
  * Header e footer da landing compartilham a mesma estrutura (logo, nav,
  * redes sociais + CTA), então vivem num único componente parametrizado.
- * "Vem Aí" e "Adquirir Fastplay" ainda não têm destino — aparecem travados
- * (sem rota, sem hover) com um badge "em breve" onde faz sentido.
+ * "Adquirir Fastplay" ainda não tem destino — aparece travado (sem rota,
+ * sem hover).
  */
 export default function LandingChrome({ as: As = 'header', sticky = false, credits = null }) {
   return (
@@ -30,15 +30,9 @@ export default function LandingChrome({ as: As = 'header', sticky = false, credi
             <Link to="/mapa" className={navLinkClass}>
               Mapa Mundi
             </Link>
-            <span
-              className="flex cursor-not-allowed items-center gap-2 text-xs uppercase tracking-[0.2em] text-fdd-cream-dark/40"
-              aria-disabled="true"
-            >
-              Vem Aí
-              <span className="rounded-full border border-fdd-gold-dark/30 px-2 py-0.5 text-[9px] tracking-[0.1em] text-fdd-gold-dark/70">
-                Em breve
-              </span>
-            </span>
+            <Link to="/profecias" className={navLinkClass}>
+              Profecias
+            </Link>
           </nav>
 
           <div className="flex items-center gap-4">
