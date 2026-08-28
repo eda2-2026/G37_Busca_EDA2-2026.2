@@ -1,0 +1,87 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --font-display: "Cinzel", "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
+
+  --color-fdd-bg: #142c2c;
+  --color-fdd-bg-deep: #0e2222;
+  --color-fdd-bg-light: #274d4a;
+  --color-fdd-cream: #f6ecd9;
+  --color-fdd-cream-dark: #e8dcc0;
+  --color-fdd-ink: #241a10;
+  --color-fdd-gold: #e0973a;
+  --color-fdd-gold-light: #f3c46b;
+  --color-fdd-gold-dark: #a8631f;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--color-fdd-bg);
+  color: var(--color-fdd-cream);
+  font-family: var(--font-sans);
+}
+
+#root {
+  min-height: 100svh;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Textured backdrop: layered radial glows + faint stepped "mountain" silhouettes */
+.fdd-backdrop {
+  position: relative;
+  min-height: 100svh;
+  background-color: var(--color-fdd-bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(224, 151, 58, 0.16), transparent 60%),
+    linear-gradient(to bottom, var(--color-fdd-bg-deep) 0%, var(--color-fdd-bg) 45%, var(--color-fdd-bg-light) 100%);
+  overflow-x: clip;
+}
+
+.fdd-backdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(115deg, transparent 40%, rgba(224, 151, 58, 0.35) 41%, transparent 42%),
+    linear-gradient(65deg, transparent 60%, rgba(224, 151, 58, 0.2) 61%, transparent 62%);
+  background-size: 100% 100%;
+  mix-blend-mode: overlay;
+}
+
+.fdd-backdrop::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: min(40svh, 320px);
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 300' preserveAspectRatio='none'%3E%3Cpath d='M0 300 L0 190 L120 110 L220 170 L340 60 L430 150 L560 40 L660 130 L760 70 L860 160 L960 90 L1080 150 L1200 100 L1200 300 Z' fill='%230e2222' opacity='0.9'/%3E%3Cpath d='M0 300 L0 230 L150 160 L260 210 L380 130 L470 190 L600 110 L720 180 L820 140 L940 200 L1060 150 L1200 190 L1200 300 Z' fill='%23193434' opacity='0.85'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 100% 100%;
+}
+
+.fdd-glow-text {
+  text-shadow:
+    0 0 12px rgba(224, 151, 58, 0.55),
+    0 0 32px rgba(224, 151, 58, 0.3);
+}
+
+.fdd-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.fdd-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-fdd-gold-dark);
+  border-radius: 999px;
+}
