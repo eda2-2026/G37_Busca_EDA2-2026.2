@@ -12,24 +12,26 @@
  */
 
 export function buscarProfeciaPorUsername(profeciasOrdenadas, usernameAlvo){
-  const left = 0;
-  const right = profeciasOrdenadas.length;
+  let left = 0;
+  let right = profeciasOrdenadas.length - 1;
+
+  if(profeciasOrdenadas.length === 0) return null;
 
   while (left <= right){
-    const meio = left + (right - left) / 2;
+    const meio = left + Math.floor((right - left) / 2);
     
-    if (profeciasOrdenadas[meio].localeCompare(usernameAlvo) == 0){
+    if (profeciasOrdenadas[meio].username.localeCompare(usernameAlvo) == 0){
       return profeciasOrdenadas[meio];
     }
 
-    if (profeciasOrdenadas[meio].localeCompare(usernameAlvo) > 1) {
+    if (profeciasOrdenadas[meio].username.localeCompare(usernameAlvo) > 0) {
       left = meio + 1;
     } else {
       right = meio - 1;
     }
   }
 
-  return "O username procurado não existe";
+  return null;
 }
 
 // int search(int* nums, int numsSize, int target) {
