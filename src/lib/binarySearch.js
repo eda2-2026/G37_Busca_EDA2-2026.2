@@ -15,18 +15,18 @@ export function buscarProfeciaPorUsername(profeciasOrdenadas, usernameAlvo){
   let left = 0;
   let right = profeciasOrdenadas.length - 1;
 
-  console.log(profeciasOrdenadas[left].nome_exibicao);
+  console.log(profeciasOrdenadas[right].username);
 
   if(profeciasOrdenadas.length === 0) return null;
 
   while (left <= right){
     const meio = left + Math.floor((right - left) / 2);
     
-    if (profeciasOrdenadas[meio].nome_exibicao.localeCompare(usernameAlvo) == 0){
-      return profeciasOrdenadas[meio];
+    if (profeciasOrdenadas[meio].username.localeCompare(usernameAlvo) == 0){
+      return profeciasOrdenadas[meio].texto_profecia; /* algo aqui ta voltando errado*/
     }
 
-    if (profeciasOrdenadas[meio].nome_exibicao.localeCompare(usernameAlvo) > 0) {
+    if (profeciasOrdenadas[meio].username.localeCompare(usernameAlvo) < 0) {
       left = meio + 1;
     } else {
       right = meio - 1;
