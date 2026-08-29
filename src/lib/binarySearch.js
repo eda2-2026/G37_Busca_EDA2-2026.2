@@ -23,7 +23,7 @@ export function buscarProfeciaPorUsername(profeciasOrdenadas, usernameAlvo){
     const meio = left + Math.floor((right - left) / 2);
     
     if (profeciasOrdenadas[meio].username.localeCompare(usernameAlvo) == 0){
-      return profeciasOrdenadas[meio].texto_profecia; /* algo aqui ta voltando errado*/
+      return profeciasOrdenadas[meio]; 
     }
 
     if (profeciasOrdenadas[meio].username.localeCompare(usernameAlvo) < 0) {

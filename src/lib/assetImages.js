@@ -1,8 +1,4 @@
-// Usa import.meta.glob para carregar apenas as imagens que já existem em
-// src/assets/imagens/{deuses,orgs}. Isso permite referenciar o caminho
-// esperado nos dados (gods.js / orgs.js) sem quebrar o build quando o
-// arquivo ainda não foi adicionado — o slug simplesmente não aparece no mapa
-// e o componente EntityImage cai no placeholder visual.
+
 const godImageModules = import.meta.glob('../assets/imagens/deuses/*.{png,jpg,jpeg,webp,svg}', {
   eager: true,
   import: 'default',

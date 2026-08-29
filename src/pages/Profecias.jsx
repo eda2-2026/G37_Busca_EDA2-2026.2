@@ -91,7 +91,7 @@ function GerarProfecia() {
 
     if (error) {
       if (error.code === '23505') {
-        setErro('Já existe uma profecia registrada com esse username — use a aba Buscar.');
+        setErro('Já existe uma profecia registrada com esse nome de usuário! Use a aba Buscar.');
       } else {
         setErro('Não foi possível consultar as Moiras agora. Tente novamente em instantes.');
       }
@@ -204,10 +204,6 @@ function BuscarProfecia() {
 
     const registros = await fetchAll();
 
-    // Pré-condição da busca binária: o array precisa estar ordenado
-    // ascendentemente por username, com o mesmo critério (localeCompare)
-    // que buscarProfeciaPorUsername usa internamente — os dois lados têm
-    // que combinar, senão a busca pode não encontrar registros existentes.
     const ordenadas = [...registros].sort((a, b) => a.username.localeCompare(b.username));
 
     const encontrada = buscarProfeciaPorUsername(ordenadas, usernameBusca.trim());
@@ -222,7 +218,7 @@ function BuscarProfecia() {
           <form onSubmit={handleBuscar} className="flex flex-col gap-5 sm:flex-row sm:items-end">
             <div className="flex-1">
               <label className={labelClass} htmlFor="usernameBusca">
-                Username
+                Nome de usuário
               </label>
               <input
                 id="usernameBusca"
@@ -250,7 +246,7 @@ function BuscarProfecia() {
 
       {buscou && !resultado && (
         <motion.p variants={fadeUp} className="text-center text-sm text-fdd-cream-dark">
-          Nenhuma profecia encontrada com esse username.
+          Nenhuma profecia encontrada com esse nome! Lembre-se que é seu username.
         </motion.p>
       )}
     </motion.div>
@@ -272,7 +268,7 @@ export default function Profecias() {
         <h1 className="mt-3 font-display text-3xl text-fdd-cream fdd-glow-text sm:text-4xl">Profecias</h1>
         <LaurelDivider className="mx-auto mt-4 h-6 w-40 text-fdd-gold" />
         <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-fdd-cream-dark">
-          Registre a profecia de um semideus junto às Moiras, ou consulte uma já registrada pelo username.
+          Registre a profecia de um semideus junto às Moiras, ou consulte uma já registrada pelo seu nome de usuário (username).
         </p>
       </motion.div>
 
