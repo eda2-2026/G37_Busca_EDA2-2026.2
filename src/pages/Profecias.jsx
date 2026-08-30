@@ -14,6 +14,17 @@ const inputClass =
   'w-full rounded-xl border-2 border-fdd-gold-dark/40 bg-fdd-cream/90 px-4 py-2 text-sm text-fdd-ink placeholder:text-fdd-ink/40 focus:border-fdd-gold focus:outline-none';
 const labelClass = 'block text-xs uppercase tracking-[0.2em] text-fdd-gold-dark';
 
+/**
+ * Evolução de O(log n) pra um n de registros: número máximo de comparações
+ * que uma busca binária precisa até convergir (⌊log2 n⌋ + 1). Só evidencia,
+ * pro n atual, o valor da análise de complexidade de buscarProfeciaPorUsername
+ * (ver src/lib/binarySearch.js) — não conta passos reais da execução.
+ */
+function passosBigO(n) {
+  if (n <= 0) return 0;
+  return Math.floor(Math.log2(n)) + 1;
+}
+
 function ModeTab({ active, onClick, children }) {
   return (
     <button
@@ -197,6 +208,7 @@ function BuscarProfecia() {
   const [usernameBusca, setUsernameBusca] = useState('');
   const [buscou, setBuscou] = useState(false);
   const [resultado, setResultado] = useState(null);
+  const [totalBusca, setTotalBusca] = useState(0);
 
   async function handleBuscar(event) {
     event.preventDefault();
@@ -208,6 +220,7 @@ function BuscarProfecia() {
 
     const encontrada = buscarProfeciaPorUsername(ordenadas, usernameBusca.trim());
     setResultado(encontrada);
+    setTotalBusca(ordenadas.length);
     setBuscou(true);
   }
 
@@ -241,7 +254,16 @@ function BuscarProfecia() {
       </motion.div>
 
       {buscou && resultado && (
-        <ProfeciaDestaque nomeExibicao={resultado.nome_exibicao} textoProfecia={resultado.texto_profecia} />
+        <>
+          <ProfeciaDestaque nomeExibicao={resultado.nome_exibicao} textoProfecia={resultado.texto_profecia} />
+          <motion.p
+            variants={fadeUp}
+            className="text-center text-xs uppercase tracking-[0.25em] text-fdd-gold-light"
+          >
+            A busca levou O({passosBigO(totalBusca)}) para ser realizada, sobre {totalBusca}{' '}
+            {totalBusca === 1 ? 'profecia ordenada' : 'profecias ordenadas'}.
+          </motion.p>
+        </>
       )}
 
       {buscou && !resultado && (

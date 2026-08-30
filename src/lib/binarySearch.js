@@ -61,3 +61,5 @@ export function buscarProfeciaPorUsername(profeciasOrdenadas, usernameAlvo){
 // export function buscarProfeciaPorUsername(profeciasOrdenadas, usernameAlvo) {
 //   throw new Error('buscarProfeciaPorUsername ainda não foi implementada — ver TODO no arquivo.');
 // }
+
+// Complexidade de buscarProfeciaPorUsername: O(log n) no tempo (cada iteração descarta metade do intervalo [left, right]) e O(1) no espaço (iterativa, sem pilha de recursão).
